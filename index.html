@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(ellipse 70% 60% at 18% 28%, rgba(122, 168, 255, 0.95), transparent 62%),
+        radial-gradient(ellipse 65% 55% at 82% 18%, rgba(214, 140, 255, 0.85), transparent 60%),
+        radial-gradient(ellipse 80% 70% at 55% 88%, rgba(126, 112, 255, 0.75), transparent 62%),
+        linear-gradient(120deg, #6f93f5 0%, #8a78f2 42%, #b07ae8 72%, #7d8ef0 100%);
+    }
+
+    .login {
+      width: min(340px, calc(100% - 48px));
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 28px;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 46px;
+      margin-bottom: 16px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.28);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+    }
+
+    .field svg {
+      flex: 0 0 auto;
+      opacity: 0.95;
+    }
+
+    .field input {
+      width: 100%;
+      border: 0;
+      outline: none;
+      background: transparent;
+      color: #fff;
+      font: inherit;
+      font-size: 14px;
+    }
+
+    .field input::placeholder {
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .options {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 2px 6px 22px;
+      font-size: 12px;
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .remember input {
+      width: 13px;
+      height: 13px;
+      margin: 0;
+      accent-color: #fff;
+      cursor: pointer;
+    }
+
+    .forgot {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .forgot:hover {
+      text-decoration: underline;
+    }
+
+    button {
+      width: 100%;
+      height: 46px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      color: #8d84a3;
+      font: inherit;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #fff;
+    }
+
+    .message {
+      min-height: 20px;
+      margin: 14px 0 0;
+      font-size: 13px;
+    }
+
+    footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 18px;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.2px;
+    }
+  </style>
+</head>
+<body>
+  <main class="login">
+    <h1>Sign in</h1>
+    <form id="login-form">
+      <label class="field">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="8" r="3.2" stroke="#fff" stroke-width="1.8"/>
+          <path d="M5.5 19.2c1.2-3 3.5-4.5 6.5-4.5s5.3 1.5 6.5 4.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <input type="text" name="username" placeholder="Username" autocomplete="username" required>
+      </label>
+
+      <label class="field">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="6" y="10.5" width="12" height="8.5" rx="1.6" stroke="#fff" stroke-width="1.8"/>
+          <path d="M8.5 10.5V8.2a3.5 3.5 0 0 1 7 0v2.3" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <input type="password" name="password" placeholder="Password" autocomplete="current-password" required>
+      </label>
+
+      <div class="options">
+        <label class="remember">
+          <input type="checkbox" name="remember">
+          Remember Me
+        </label>
+        <a class="forgot" href="#">Forgot Password?</a>
+      </div>
+
+      <button type="submit">Sign in</button>
+      <p class="message" id="message" role="status"></p>
+    </form>
+  </main>
+
+  <footer>Anurag's Lab</footer>
+
+  <script>
+    const form = document.getElementById("login-form");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const username = form.username.value.trim();
+      message.textContent = "Signed in as " + username;
+    });
+  </script>
+</body>
+</html>
